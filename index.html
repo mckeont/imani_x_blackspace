@@ -51,6 +51,7 @@
     <script src= "js/eat.js"></script>
     <script src= "js/markets.js"></script>
     <script src= "js/cultural.js"></script>
+    <script src= "js/schoolcomm.js"></script>
 
 
 
@@ -102,10 +103,16 @@
     }).bringToFront().addTo(map);
 
 
-var School  = L.geoJson(EO, {
+var School  = L.geoJson(schoolcomm, {
   pointToLayer: function(feature, latlng) {
   switch (feature.properties.TYPE) {
     case "School":
+    return L.circleMarker(latlng, {
+      color: "green",
+      radius: 4
+    });
+
+    case "school":
     return L.circleMarker(latlng, {
       color: "green",
       radius: 4
@@ -146,7 +153,7 @@ var Religious = L.geoJson(EO, {
 return "<b>" + "" + layer.feature.properties.TYPE + "<br>"  + "Name: " + layer.feature.properties.name
 }).bringToFront().addTo(map);
 
-var comm  = L.geoJson(EO, {
+var comm  = L.geoJson(schoolcomm, {
   pointToLayer: function(feature, latlng) {
   switch (feature.properties.TYPE) {
 
